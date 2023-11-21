@@ -12,6 +12,7 @@
     }
 
     .wrapper {
+        width: 100%;
         padding: 0 6px;
         margin-bottom: 2rem;
     }
@@ -297,4 +298,9 @@
     @media (max-width: 720px) {
         background-color: transparent;
     }    
+}
+
+.movies {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
 }
