@@ -1,8 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import starredSlice from "../data/starredSlice";
-import "../styles/starred.scss";
 import Movies from "../components/Movies/Movies";
+
+import "../styles/starred.scss";
 
 const Starred = ({ viewTrailer }) => {
   const { starredMovies } = useSelector((state) => state.starred);

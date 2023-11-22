@@ -46,5 +46,15 @@
         background-color: #e3e3e3;
       }
     }
+   
+    @media (max-width: 720px) {
+      top: 16px;
+      right: 16px;
+
+      button {
+        height: 30px;
+        width: 30px;
+      }
+    }
   }
 }

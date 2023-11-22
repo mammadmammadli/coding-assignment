@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Routes, Route, createSearchParams, useSearchParams, useNavigate } from "react-router-dom"
+import { Routes, Route, createSearchParams, useSearchParams } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux'
 import moviesSlice, { fetchMovies, searchMovies } from './data/moviesSlice'
 import Header from './components/Header'
@@ -9,7 +9,6 @@ import WatchLater from './pages/WatchLater'
 import './app.scss'
 import 'reactjs-popup/dist/index.css'
 import movieService from './services/movies'
-import MovieWrapper from './components/Movies'
 import Home from './pages'
 
 const App = () => {
