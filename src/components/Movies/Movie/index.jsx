@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
-import starredSlice from "../../data/starredSlice";
-import watchLaterSlice from "../../data/watchLaterSlice";
-import placeholder from "../../assets/not-found-500X750.jpeg";
+import starredSlice from "../../../data/starredSlice";
+import watchLaterSlice from "../../../data/watchLaterSlice";
+import placeholder from "../../../assets/not-found-500X750.jpeg";
 
 const Movie = ({ movie, viewTrailer }) => {
-  const state = useSelector((state) => state);
-  const { starred, watchLater } = state;
+  const { starredMovies } = useSelector((state) => state.starred);
+  const { watchLaterMovies } = useSelector((state) => state.watchLater);
+
   const { starMovie, unstarMovie } = starredSlice.actions;
   const { addToWatchLater, removeFromWatchLater } = watchLaterSlice.actions;
 
@@ -17,7 +18,7 @@ const Movie = ({ movie, viewTrailer }) => {
     if (e.stopPropagation) e.stopPropagation();
     e.target.parentElement.parentElement.classList.remove("opened");
   };
-// col-3 col-sm-4 col-md-3 col-lg-3 col-xl-2
+  // col-3 col-sm-4 col-md-3 col-lg-3 col-xl-2
   return (
     <div className="wrapper">
       <div
@@ -29,7 +30,7 @@ const Movie = ({ movie, viewTrailer }) => {
           <div className="info_panel">
             <div className="overview">{movie.overview}</div>
             <div className="year">{movie.release_date?.substring(0, 4)}</div>
-            {!starred.starredMovies
+            {!starredMovies
               .map((movie) => movie.id)
               .includes(movie.id) ? (
               <span
@@ -58,7 +59,7 @@ const Movie = ({ movie, viewTrailer }) => {
                 <i className="bi bi-star-fill" data-testid="star-fill" />
               </span>
             )}
-            {!watchLater.watchLaterMovies
+            {!watchLaterMovies
               .map((movie) => movie.id)
               .includes(movie.id) ? (
               <button

@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import Modal from "../Modal";
-import YoutubePlayer from "../YoutubePlayer";
+import Modal from "../../Modal";
+import YoutubePlayer from "../../YoutubePlayer";
 import { AnimatePresence } from "framer-motion";
-import moviesSlice from "../../data/moviesSlice";
-import Spinner from "../Spinner";
+import moviesSlice from "../../../data/moviesSlice";
+import Spinner from "../../Spinner";
+import '../../../styles/movies.scss';
 
 const renderBody = (selectedMovie, status) => {
   if (status === "loading") {
@@ -13,6 +14,15 @@ const renderBody = (selectedMovie, status) => {
   if (status === "error") {
     return <div>Something went wrong</div>;
   }
+
+  if (!selectedMovie.data.videoKey) {
+    return (
+      <div className="movie__not-found">
+        <h2>Sorry, video not found :(</h2>
+      </div>
+    );
+  }
+
   return <YoutubePlayer videoKey={selectedMovie.data.videoKey} />;
 };
 
