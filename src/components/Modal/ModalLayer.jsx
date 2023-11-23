@@ -1,6 +1,7 @@
 import { useCallback, useEffect } from "react";
 import ModalBody from "./ModalBody";
 import { motion } from "framer-motion";
+
 const ModalLayer = ({ children, onClose }) => {
   const keydownHandler = useCallback(
     (e) => {
@@ -21,6 +22,7 @@ const ModalLayer = ({ children, onClose }) => {
 
   return (
     <motion.div
+      data-testid="modal"
       className="modal__layer"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}

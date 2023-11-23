@@ -23,14 +23,14 @@ const MovieCard = ({ movie, viewTrailer }) => {
   );
 
   return (
-    <div className="movie-card">
+    <div className="movie-card" data-testid="movie-card">
       <div
         className="body"
         onMouseEnter={() => setShowContent(true)}
         onMouseLeave={() => setShowContent(false)}
         onClick={() => setShowContent(!showContent)}
       >
-        <div className={`image-container ${showContent ? 'open' : ''}`}>
+        <div className={`image-container ${showContent ? "open" : ""}`}>
           <img
             src={
               movie.poster_path
@@ -60,12 +60,14 @@ const MovieCard = ({ movie, viewTrailer }) => {
                   e.stopPropagation();
                   dispatch(unstarMovie(movie));
                 }}
+                data-testid="unstar-link"
               >
                 <i className="bi bi-star-fill" />
               </button>
             ) : (
               <button
                 className="star"
+                data-testid="starred-link"
                 onClick={(e) => {
                   e.stopPropagation();
                   dispatch(
@@ -85,6 +87,7 @@ const MovieCard = ({ movie, viewTrailer }) => {
             {isWatchLater ? (
               <button
                 className="watch-later"
+                data-testid="remove-watch-later"
                 onClick={(e) => {
                   e.stopPropagation();
                   dispatch(removeFromWatchLater(movie));
@@ -95,6 +98,7 @@ const MovieCard = ({ movie, viewTrailer }) => {
             ) : (
               <button
                 className="watch-later"
+                data-testid="watch-later"
                 onClick={(e) => {
                   e.stopPropagation();
                   dispatch(
@@ -113,6 +117,7 @@ const MovieCard = ({ movie, viewTrailer }) => {
             )}
             <button
               className="trailer"
+              data-testid="view-trailer"
               onClick={(e) => {
                 e.stopPropagation();
                 viewTrailer(movie);

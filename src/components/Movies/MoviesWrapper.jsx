@@ -18,7 +18,7 @@ const MovieWrapper = ({ viewTrailer }) => {
   }, fetchStatus !== "loading" && movies.length !== totalResults);
 
   return (
-    <>
+    <div data-testid="movies-wrapper">
       {movies?.length > 0 && (
         <Movies movies={movies} viewTrailer={viewTrailer} />
       )}
@@ -28,7 +28,7 @@ const MovieWrapper = ({ viewTrailer }) => {
         </div>
       )}
       <MovieVideo />
-    </>
+    </div>
   );
 };
 

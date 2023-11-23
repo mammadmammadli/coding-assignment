@@ -35,7 +35,7 @@ const App = () => {
   }
 
   const _searchMovies = (query) => {
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
     getSearchResults(query)
   }
 

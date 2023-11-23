@@ -5,11 +5,15 @@ import "../../styles/movies.scss";
 const Movies = ({ viewTrailer, movies }) => {
   return (
     <div data-testid="movies" className="movies">
-      {movies?.map((movie, index) => {
-        return (
-          <MovieCard movie={movie} key={index} viewTrailer={viewTrailer} />
-        );
-      })}
+      {movies?.length > 0 ? (
+        movies?.map((movie, index) => {
+          return (
+            <MovieCard movie={movie} key={index} viewTrailer={viewTrailer} />
+          );
+        })
+      ) : (
+        <h1 data-testid="movies-empty">No movies found</h1>
+      )}
     </div>
   );
 };

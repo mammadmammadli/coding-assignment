@@ -1,6 +1,7 @@
 const CloseIcon = (props) => {
   return (
     <svg
+      data-testid="close-icon"
       width="24"
       height="24"
       viewBox="0 0 24 24"

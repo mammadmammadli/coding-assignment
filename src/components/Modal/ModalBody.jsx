@@ -7,7 +7,7 @@ const ModalBody = ({ children, onClose }) => {
   return (
     <div className="modal__body" ref={ref}>
       <div className="modal__close">
-        <button onClick={() => onClose()}>
+        <button onClick={() => onClose()} data-testid="close-modal-button">
           <CloseIcon />
         </button>
       </div>
