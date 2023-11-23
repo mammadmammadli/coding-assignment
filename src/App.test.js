@@ -15,7 +15,7 @@ it('search for movies', async () => {
   await waitFor(() => {
     expect(screen.getAllByText('Through the Eyes of Forrest Gump')[0]).toBeInTheDocument()
   })
-  const viewTrailerBtn = screen.getAllByText('View Trailer')[0]
+  const viewTrailerBtn = screen.getAllByTestId('view-trailer')[0]
   await userEvent.click(viewTrailerBtn)
   await waitFor(() => {
     expect(screen.getByTestId('youtube-player')).toBeInTheDocument()

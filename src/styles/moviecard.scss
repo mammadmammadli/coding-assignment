@@ -1,0 +1,127 @@
+@import "assets/mixins";
+
+.movie-card {
+  width: 100%;
+  height: auto;
+
+  & * {
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+  }
+
+  .body {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    height: 100%;
+
+    .image-container {
+      height: 100%;
+
+      >img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      &.open {
+        > img {
+          transform: scale(1.05);
+        }
+      }  
+    }
+
+    .content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 1rem;
+      background-color: rgba(0, 0, 0, .75);
+      opacity: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      .title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: white;
+      }
+
+      .info-wrapper {
+        flex: 1;
+        overflow-y: auto;
+
+        span {
+          font-size: 0.8rem;
+          font-weight: 400;
+          color: white;
+        }
+      }
+
+      .year {
+        display: flex;
+        justify-content: center;
+
+        span {
+          color: white;
+        }
+      }
+
+      .actions {
+        margin-top: auto;
+        display: flex;
+        justify-content: space-around;
+
+        button {
+          background: none;
+          border: 0;
+          height: 40px;
+          width: 40px;
+          border-radius: 50%;
+          color: white;
+          font-size: 16px;
+          background-color: black;
+          border: 0.5px solid white;
+          margin: 0;
+
+          &.star {
+            &:hover {
+              border-color: #e50914;
+              background-color: #e50914;
+            }
+          }
+
+          &.watch-later {
+            &:hover {
+              border-color: #1CB5E0;
+              background-color: #1CB5E0;
+            }
+          }
+
+          &.trailer {
+            &:hover {
+              border-color: #1CB5E0;
+              background-color: #1CB5E0;
+            }
+          }
+        }
+
+        @include mobile {
+          gap: 0.5rem;
+        }
+      }
+
+      &.open {
+        opacity: 1;
+      }
+    }
+  }
+}

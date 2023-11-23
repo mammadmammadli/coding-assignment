@@ -1,0 +1,63 @@
+@import "assets/mixins";
+
+.modal {
+  &__layer {
+    overflow: hidden;
+    z-index: 9999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .9);
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__body {
+    background-color: transparent;
+    border-radius: 8px;
+    width: 640px;
+    min-width: 640px;
+    min-height: 360px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  &__close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+
+    button {
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 0;
+      background-color: white;
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      transition: all linear 350ms;
+
+      &:hover {
+        background-color: #e3e3e3;
+      }
+    }
+
+    @include mobile {
+      top: 16px;
+      right: 16px;
+
+      button {
+        height: 30px;
+        width: 30px;
+      }
+    }
+  }
+}
