@@ -33,8 +33,8 @@ const MovieVideo = () => {
 
   return (
     <AnimatePresence>
-      {!!selectedMovie && (
-        <Modal onClose={() => dispatch(removeSelectedMovie())}>
+      {selectedMovie && (
+        <Modal isOpen={!!selectedMovie} onClose={() => dispatch(removeSelectedMovie())}>
           {renderBody(selectedMovie, selectedMovie.fetchStatus)}
         </Modal>
       )}

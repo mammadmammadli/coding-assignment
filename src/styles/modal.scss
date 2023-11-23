@@ -1,5 +1,8 @@
+@import "assets/mixins";
+
 .modal {
   &__layer {
+    overflow: hidden;
     z-index: 9999;
     position: fixed;
     top: 0;
@@ -46,8 +49,8 @@
         background-color: #e3e3e3;
       }
     }
-   
-    @media (max-width: 720px) {
+
+    @include mobile {
       top: 16px;
       right: 16px;
 

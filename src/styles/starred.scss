@@ -1,28 +1,41 @@
+@import "assets/colors";
+
 .starred {
-  
-    footer {
-        margin-top: 50px;
+	.empty-cart {
+		p {
+			color: $white;
+		}
+	}
 
-        .total-price {
-            font-size: 1.8rem;
-        }
+	.starred-movies {
+		h6 {
+			color: $white;
+			font-size: 40px;
+		}
+	}
 
-        .btn {
-            width: auto;
-            padding: 0 20px;                   
-            font-size: 0.8rem;
-            background: red;
-            border: none;
-        }
+	footer {
+		margin-top: 50px;
 
-        .back-button {
-            color: #000;
-            background: #efefef;
-        }
+		.total-price {
+			font-size: 1.8rem;
+		}
 
-        .back-button:hover {
-            background: #dedede;
-        }
-    }
+		.btn {
+			width: auto;
+			padding: 0 20px;
+			font-size: 0.8rem;
+			background: red;
+			border: none;
+		}
+
+		.back-button {
+			color: #000;
+			background: #efefef;
+		}
+
+		.back-button:hover {
+			background: #dedede;
+		}
+	}
 }
-  

@@ -1,7 +1,7 @@
-import Movies from "../components/Movies";
+import MoviesWrapper from "../components/Movies/MoviesWrapper";
 
 const Home = ({ viewTrailer }) => {
-  return <Movies viewTrailer={viewTrailer} />;
+  return <MoviesWrapper viewTrailer={viewTrailer} />;
 };
 
 export default Home;

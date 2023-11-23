@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import "../styles/header.scss";
@@ -6,7 +6,9 @@ import { debounce } from "../utils";
 
 const Header = ({ searchMovies,resetSearch }) => {
   const { starredMovies } = useSelector((state) => state.starred);
-
+  const [searchParams] = useSearchParams()
+  const searchQuery = searchParams.get('search');
+  
   return (
     <header>
       <Link to="/" data-testid="home" onClick={resetSearch}>
