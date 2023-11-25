@@ -76,7 +76,7 @@ const App = () => {
             videoKey={videoKey}
           />
         ) : (
-          <div style={{ padding: "30px" }}><h6>no trailer available. Try another movie</h6></div>
+          <div><h6>no trailer available. Try another movie</h6></div>
         )}
 
         <Routes>
