@@ -3,21 +3,22 @@ import starredSlice from '../data/starredSlice'
 import watchLaterSlice from '../data/watchLaterSlice'
 import placeholder from '../assets/not-found-500X750.jpeg'
 
-const Movie = ({ movie, viewTrailer, closeCard }) => {
+const Movie = ({ movie, viewTrailer }) => {
 
-    const state = useSelector((state) => state)
-    const { starred, watchLater } = state
+    const {starredMovies} = useSelector((state) => state.starred)
+    const  {watchLaterMovies} = useSelector((state) => state.watchLater)
     const { starMovie, unstarMovie } = starredSlice.actions
     const { addToWatchLater, removeFromWatchLater } = watchLaterSlice.actions
 
     const dispatch = useDispatch()
 
     const myClickHandler = (e) => {
-        if (!e) var e = window.event
-        e.cancelBubble = true
-        if (e.stopPropagation) e.stopPropagation()
+        e.stopPropagation()
         e.target.parentElement.parentElement.classList.remove('opened')
     }
+
+    const isStarred = starredMovies.some(_movie => _movie.id === movie.id);
+    const isWatchLater = watchLaterMovies.some(_movie => _movie.id === movie.id);
 
     return (
         <div className="wrapper col-3 col-sm-4 col-md-3 col-lg-3 col-xl-2">
@@ -27,7 +28,7 @@ const Movie = ({ movie, viewTrailer, closeCard }) => {
                 <div className="info_panel">
                     <div className="overview">{movie.overview}</div>
                     <div className="year">{movie.release_date?.substring(0, 4)}</div>
-                    {!starred.starredMovies.map(movie => movie.id).includes(movie.id) ? (
+                    {!isStarred? (
                         <span className="btn-star" data-testid="starred-link" onClick={() => 
                             dispatch(starMovie({
                                 id: movie.id, 
@@ -44,7 +45,7 @@ const Movie = ({ movie, viewTrailer, closeCard }) => {
                             <i className="bi bi-star-fill" data-testid="star-fill" />
                         </span>
                     )}
-                    {!watchLater.watchLaterMovies.map(movie => movie.id).includes(movie.id) ? (
+                    {!isWatchLater ? (
                         <button type="button" data-testid="watch-later" className="btn btn-light btn-watch-later" onClick={() => dispatch(addToWatchLater({
                                 id: movie.id, 
                                 overview: movie.overview, 
