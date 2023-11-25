@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Routes, Route, createSearchParams, useSearchParams, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux'
 import 'reactjs-popup/dist/index.css'
@@ -12,7 +12,6 @@ import YouTubePlayer from './components/YoutubePlayer'
 import './app.scss'
 
 const App = () => {
-
   const { movies } = useSelector((state) => state.movies)
   const dispatch = useDispatch()
   const [searchParams, setSearchParams] = useSearchParams()
@@ -20,10 +19,6 @@ const App = () => {
   const [videoKey, setVideoKey] = useState()
   const [, setOpen] = useState(false)
   const navigate = useNavigate()
-
-  const closeCard = () => {
-
-  }
 
   const getSearchResults = (query) => {
     if (query !== '') {
@@ -40,13 +35,13 @@ const App = () => {
     getSearchResults(query)
   }
 
-  const getMovies = () => {
+  const getMovies = useCallback(() => {
     if (searchQuery) {
       dispatch(fetchMovies(`${ENDPOINT_SEARCH}&query=` + searchQuery))
     } else {
       dispatch(fetchMovies(ENDPOINT_DISCOVER))
     }
-  }
+  }, [dispatch, searchQuery])
 
   const viewTrailer = (movie) => {
     getMovie(movie.id)
@@ -69,7 +64,7 @@ const App = () => {
 
   useEffect(() => {
     getMovies()
-  }, [])
+  }, [getMovies])
 
   return (
     <div className="App">
@@ -85,7 +80,7 @@ const App = () => {
         )}
 
         <Routes>
-          <Route path="/" element={<Movies movies={movies} viewTrailer={viewTrailer} closeCard={closeCard} />} />
+          <Route path="/" element={<Movies movies={movies} viewTrailer={viewTrailer} />} />
           <Route path="/starred" element={<Starred viewTrailer={viewTrailer} />} />
           <Route path="/watch-later" element={<WatchLater viewTrailer={viewTrailer} />} />
           <Route path="*" element={<h1 className="not-found">Page Not Found</h1>} />
